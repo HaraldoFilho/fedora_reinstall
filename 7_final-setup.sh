@@ -2,6 +2,9 @@
 
 sudo pwd > /dev/null
 
+
+# create new users
+
 echo " "
 echo "## CREATE USERS ##"
 echo " "
@@ -32,17 +35,31 @@ do
   fi
 done
 
+
 # restore avatars
+
 if [[ -d files/var/lib/AccountsService/icons ]];
   then
     if [[ -d files/var/lib/AccountsService/users ]];
       then
-        sudo cp files/var/lib/AccountsService/icons/* /var/lib/AccountsService/icons/
-        sudo cp files/var/lib/AccountsService/users/* /var/lib/AccountsService/users/
         echo " "
-        echo "Restored users avatars!"
+        echo " "
+        echo "## RESTORE USERS AVATARS ##"
+        echo " "
+        echo -n "Restore users avatars? ([yes]/no): "
+        read answer
+        if [[ $answer != 'no' ]];
+          then
+            sudo cp files/var/lib/AccountsService/icons/* /var/lib/AccountsService/icons/
+            sudo cp files/var/lib/AccountsService/users/* /var/lib/AccountsService/users/
+            echo " "
+            echo "Users avatars have been restored!"
+        fi
     fi
 fi
+
+
+# update file system table
 
 if [[ -f files/etc/fstab ]];
   then
@@ -50,9 +67,9 @@ if [[ -f files/etc/fstab ]];
     echo " "
     echo "## UPDATE FILE SYSTEM TABLE ##"
     echo " "
-    echo "When editor opens, do the following:"
+    echo "After the two tabs open on the editor, do the following:"
     echo " "
-    echo "Replace the UUID of partitions '/', '/boot/efi' and 'none'"
+    echo "Replace the UUID of partitions '/', '/boot/efi' and 'swap'"
     echo "in the tab of 'files/etc/fstab' with the values in the tab of '/etc/fstab'."
     echo " "
     echo "Press ENTER to continue"
@@ -64,11 +81,22 @@ if [[ -f files/etc/fstab ]];
     sudo cp files/etc/fstab /etc/fstab
 fi
 
-# restore crontab
-if [[ -d files/var/spool/cron ]];
+
+# restore root crontab
+
+if [[ -f files/var/spool/cron/root ]];
   then
-    sudo cp files/var/spool/cron/* /var/spool/cron/
-    echo "Restored crontabs!"
+    echo " "
+    echo "## RESTORE ROOT CRONTAB ##"
+    echo " "
+    echo "When editor opens hit 'Ctrl + O', 'ENTER' and 'Ctrl + X'"
+    echo " "
+    echo "Press ENTER to continue"
+    read enter
+
+    sudo cp files/var/spool/cron/root /var/spool/cron/
+    sudo crontab -e
+    echo "Restored root crontab!"
 fi
 
 echo " "
