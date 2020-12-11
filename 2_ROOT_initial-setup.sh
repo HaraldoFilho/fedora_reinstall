@@ -14,6 +14,9 @@ if [[ -f files/etc/hostname ]];
     echo "New hostname is '$HOSTNAME'"
 fi
 
+# create /virt directory
+mkdir /virt
+
 # restore system files
 
 if [[ -f files/root/.bashrc ]];
