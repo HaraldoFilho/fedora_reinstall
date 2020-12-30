@@ -7,14 +7,15 @@ Scripts to be executed after a [Fedora](https://getfedora.org) reinstallation to
 #### Storage
 - SSD1: 240GB (sda)
 - SSD2: 120GB (sdb)
+
 #### Partition Scheme
 - sda1: /boot/efi
 - sda2: /
 - sda3: /opt
 - sda4: /home
 - sda5: swap
-- sdb1: /opt/android/avd
-- sdb2: /opt/anaconda/conda
+- sdb1: /virt
+
 #### Graphics
 - Integrated Mesa Intel® UHD Graphics 620 (WHL GT2)
 - Dedicated NVIDIA Corporation GP108M [GeForce MX150]
