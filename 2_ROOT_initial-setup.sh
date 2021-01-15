@@ -88,6 +88,7 @@ dnf -y install gnome-chess
 dnf -y install armacycles-ad
 
 # install general utilities
+dnf -y install tkcvs
 dnf -y install gcolor3
 dnf -y install peek
 dnf -y install stellarium

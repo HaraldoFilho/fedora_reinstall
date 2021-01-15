@@ -52,6 +52,7 @@ Restore some system files, update system and install the following software:
 - GNOME Chess
 - Armacycles Advanced
 #### General Utilities
+- TkDiff
 - Color picker 3
 - Peek
 - Stellarium
