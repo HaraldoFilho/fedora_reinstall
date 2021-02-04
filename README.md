@@ -55,6 +55,7 @@ Restore some system files, update system and install the following software:
 - TkDiff
 - Color picker 3
 - Peek
+- Cawbird
 - Stellarium
 - Image Magick
 - Nautilus Image Converter

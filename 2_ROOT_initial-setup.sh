@@ -91,6 +91,7 @@ dnf -y install armacycles-ad
 dnf -y install tkcvs
 dnf -y install gcolor3
 dnf -y install peek
+dnf -y install cawbird
 dnf -y install stellarium
 dnf -y install alien
 dnf -y install mysql-connector-odbc
