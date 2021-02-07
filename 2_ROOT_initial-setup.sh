@@ -90,7 +90,6 @@ dnf -y install armacycles-ad
 # install general utilities
 dnf -y install tkcvs
 dnf -y install gcolor3
-dnf -y install peek
 dnf -y install cawbird
 dnf -y install stellarium
 dnf -y install alien
