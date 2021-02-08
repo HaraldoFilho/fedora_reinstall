@@ -13,6 +13,8 @@ if ! compgen -G "runfiles/NVIDIA-Linux-x86_64-*.run" > /dev/null;
     echo "! No NVIDIA driver installer has been found on directory 'runfiles'."
     echo "! A NVIDIA driver installer is needed before removing Nouveau."
     exit 1
+  else
+    chmod 755 runfiles/NVIDIA-Linux-x86_64-*.run
 fi
 
 # Disable nouveau

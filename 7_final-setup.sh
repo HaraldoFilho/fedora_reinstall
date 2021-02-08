@@ -30,7 +30,7 @@ do
   echo " "
   echo -n  "Add another user? (yes/[no]): "
   read answer
-  if [ $answer != 'yes' ];
+  if [[ $answer != 'yes' ]];
     then exit='true'
   fi
 done

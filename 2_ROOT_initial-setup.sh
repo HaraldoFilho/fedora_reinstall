@@ -15,7 +15,10 @@ if [[ -f files/etc/hostname ]];
 fi
 
 # create /virt directory
-mkdir /virt
+if [[ ! -d /virt ]];
+  then
+    mkdir /virt
+fi
 
 # restore system files
 
