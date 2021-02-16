@@ -91,6 +91,10 @@ if compgen -G "tarfiles/ideaIC-*.tar.gz" > /dev/null;
         echo "Complete!"
     fi
 fi
+if [[ -f files/usr/share/applications/intellij-ide.desktop ]];
+  then
+    sudo cp files/usr/share/applications/intellij-ide.desktop /usr/share/applications/
+fi
 
 
 # Anaconda
