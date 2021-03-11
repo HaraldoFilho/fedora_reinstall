@@ -34,6 +34,7 @@ Restore some system files, update system and install the following software:
 - GParted
 - Nutty
 - GNOME Tweaks
+- Firewall
 - xterm
 - CPU-X
 - Samba

@@ -47,6 +47,7 @@ dnf -y update
 dnf -y install gparted
 dnf -y install nutty
 dnf -y install gnome-tweaks
+dnf -y install firewall-config
 
 # install xterm
 dnf -y install xterm
