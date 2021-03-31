@@ -79,6 +79,7 @@ Install additional software, if present in the directories [packages](https://gi
 - [Skype](https://www.skype.com/)
 - [Android Studio](https://developer.android.com/studio)
 - [IntelliJ](https://www.jetbrains.com/idea/)
+- [PyCharm](https://www.jetbrains.com/pycharm/)
 - [Anaconda](https://www.anaconda.com/)
 - [Unified Remote](https://www.unifiedremote.com/)
 - [RealVNC](https://www.realvnc.com/)
