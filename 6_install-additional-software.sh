@@ -85,12 +85,12 @@ if compgen -G "tarfiles/ideaIC-*.tar.gz" > /dev/null;
   then
     if [[ ! -d /opt/jetbrains ]];
       then
-        echo ""
-        echo "# Installing IntelliJ..."
         sudo mkdir /opt/jetbrains
-        sudo tar -xzf tarfiles/ideaIC-*.tar.gz --directory=/opt/jetbrains
-        echo "Complete!"
     fi
+    echo ""
+    echo "# Installing IntelliJ..."
+    sudo tar -xzf tarfiles/ideaIC-*.tar.gz --directory=/opt/jetbrains
+    echo "Complete!"
 fi
 
 if [[ -f files/usr/share/applications/intellij-ide.desktop ]];
@@ -105,12 +105,32 @@ if compgen -G "tarfiles/pycharm-community-*.tar.gz" > /dev/null;
   then
     if [[ ! -d /opt/jetbrains ]];
       then
-        echo ""
-        echo "# Installing PyCharm..."
         sudo mkdir /opt/jetbrains
-        sudo tar -xzf tarfiles/pycharm-community-*.tar.gz --directory=/opt/jetbrains
-        echo "Complete!"
     fi
+    echo ""
+    echo "# Installing PyCharm..."
+    sudo tar -xzf tarfiles/pycharm-community-*.tar.gz --directory=/opt/jetbrains
+    echo "Complete!"
+fi
+
+
+# Eclipse C++
+
+if compgen -G "tarfiles/eclipse-cpp-*-linux-gtk-x86_64.tar.gz" > /dev/null;
+  then
+    if [[ ! -d /opt/eclipse ]];
+      then
+        sudo mkdir /opt/eclipse
+    fi
+    echo ""
+    echo "# Installing Eclipse C++..."
+    sudo tar -xzf tarfiles/eclipse-cpp-*-linux-gtk-x86_64.tar.gz --directory=/opt/eclipse
+    sudo mv /opt/eclipse/eclipse /opt/eclipse/eclipse-cpp
+    echo "Complete!"
+fi
+if [[ -f files/usr/share/applications/eclipse-cpp.desktop ]];
+  then
+    sudo cp files/usr/share/applications/eclipse-cpp.desktop /usr/share/applications/
 fi
 
 

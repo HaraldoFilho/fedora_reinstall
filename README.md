@@ -70,7 +70,7 @@ Remove Nouveau Driver, which conflicts with NVIDIA, and reboot system in command
 Install NVIDIA Drivers and reboot system in graphical mode.
 
 ### [6_install-additional-software.sh](https://github.com/HaraldoFilho/fedora_reinstall/blob/master/6_install-additional-software.sh)
-Install additional software, if present in the directories [packages](https://github.com/HaraldoFilho/fedora_reinstallers/tree/master/packages), [runfiles](https://github.com/HaraldoFilho/fedora_reinstallers/tree/master/runfiles) and [tarfiles](https://github.com/HaraldoFilho/fedora_reinstallers/tree/master/tarfiles).
+Install additional software, if present in the directories [packages](packages), [runfiles](runfiles) and [tarfiles](tarfiles).
 
 #### Installed Software
 - [Foxit Reader](https://www.foxitsoftware.com/pdf-reader/)
@@ -80,6 +80,7 @@ Install additional software, if present in the directories [packages](https://gi
 - [Android Studio](https://developer.android.com/studio)
 - [IntelliJ](https://www.jetbrains.com/idea/)
 - [PyCharm](https://www.jetbrains.com/pycharm/)
+- [Eclipse C++](https://www.eclipse.org/)
 - [Anaconda](https://www.anaconda.com/)
 - [Unified Remote](https://www.unifiedremote.com/)
 - [RealVNC](https://www.realvnc.com/)
