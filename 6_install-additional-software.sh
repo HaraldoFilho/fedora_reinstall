@@ -1,7 +1,11 @@
 #!/bin/bash
 
+# Remove NVIDIA drivers installers
 
-# Foxit Reader
+rm runfiles/NVIDIA-Linux-x86_64-*.run
+
+
+# Install Foxit Reader
 
 sudo pwd > /dev/null
 
@@ -10,21 +14,24 @@ if compgen -G "runfiles/FoxitReader.enu.setup.*.x64.run" > /dev/null;
     echo ""
     echo "# Installing Foxit PDF Reader..."
     sudo runfiles/FoxitReader.enu.setup.*.x64.run
-    echo "Complete!"
+    rm runfiles/FoxitReader.enu.setup.*.x64.run
+    echo "Completed!"
 fi
 
 
-# Google Chrome
+# Install Google Chrome
 
 if [[ -f packages/google-chrome-stable_current_x86_64.rpm ]];
   then
     echo ""
     echo "# Installing Google Chrome..."
     sudo dnf -y install packages/google-chrome-stable_current_x86_64.rpm
+    rm packages/google-chrome-stable_current_x86_64.rpm
+    echo "Completed!"
 fi
 
 
-# Atom
+#  Install Atom
 
 if [[ -f packages/atom.x86_64.rpm ]];
   then
@@ -35,20 +42,24 @@ if [[ -f packages/atom.x86_64.rpm ]];
         sudo rm /var/lib/rpm/.rpm.lock
     fi
     sudo dnf -y install packages/atom.x86_64.rpm
+    rm packages/atom.x86_64.rpm
+    echo "Completed!"
 fi
 
 
-# Skype
+# Install Skype
 
 if [[ -f packages/skypeforlinux-64.rpm ]];
   then
     echo ""
     echo "# Installing Skype..."
     sudo dnf -y install packages/skypeforlinux-64.rpm
+    rm packages/skypeforlinux-64.rpm
+    echo "Completed!"
 fi
 
 
-# Android Studio
+# Install Android Studio
 
 if compgen -G "tarfiles/android-studio-ide-*-linux.tar.gz" > /dev/null;
   then
@@ -61,7 +72,8 @@ if compgen -G "tarfiles/android-studio-ide-*-linux.tar.gz" > /dev/null;
         echo ""
         echo "# Installing Android Studio..."
         sudo tar -xzf tarfiles/android-studio-ide-*-linux.tar.gz --directory=/opt/android/
-        echo "Complete!"
+        rm tarfiles/android-studio-ide-*-linux.tar.gz --directory=/opt/android/
+        echo "Completed!"
     fi
 fi
 if [[ -f files/usr/share/applications/android-studio.desktop ]];
@@ -74,7 +86,7 @@ if [[ -f files/etc/udev/rules.d/51-android.rules ]];
 fi
 
 
-# IntelliJ
+# Install IntelliJ
 
 if [[ -d ~/.config/JetBrains ]];
   then
@@ -90,7 +102,8 @@ if compgen -G "tarfiles/ideaIC-*.tar.gz" > /dev/null;
     echo ""
     echo "# Installing IntelliJ..."
     sudo tar -xzf tarfiles/ideaIC-*.tar.gz --directory=/opt/jetbrains
-    echo "Complete!"
+    rm tarfiles/ideaIC-*.tar.gz --directory=/opt/jetbrains
+    echo "Completed!"
 fi
 
 if [[ -f files/usr/share/applications/intellij-ide.desktop ]];
@@ -99,7 +112,7 @@ if [[ -f files/usr/share/applications/intellij-ide.desktop ]];
 fi
 
 
-# PyCharm
+# Install PyCharm
 
 if compgen -G "tarfiles/pycharm-community-*.tar.gz" > /dev/null;
   then
@@ -110,11 +123,12 @@ if compgen -G "tarfiles/pycharm-community-*.tar.gz" > /dev/null;
     echo ""
     echo "# Installing PyCharm..."
     sudo tar -xzf tarfiles/pycharm-community-*.tar.gz --directory=/opt/jetbrains
-    echo "Complete!"
+    rm tarfiles/pycharm-community-*.tar.gz --directory=/opt/jetbrains
+    echo "Completed!"
 fi
 
 
-# Eclipse C++
+# Install Eclipse C++
 
 if compgen -G "tarfiles/eclipse-cpp-*-linux-gtk-x86_64.tar.gz" > /dev/null;
   then
@@ -125,8 +139,9 @@ if compgen -G "tarfiles/eclipse-cpp-*-linux-gtk-x86_64.tar.gz" > /dev/null;
     echo ""
     echo "# Installing Eclipse C++..."
     sudo tar -xzf tarfiles/eclipse-cpp-*-linux-gtk-x86_64.tar.gz --directory=/opt/eclipse
+    rm tarfiles/eclipse-cpp-*-linux-gtk-x86_64.tar.gz --directory=/opt/eclipse
     sudo mv /opt/eclipse/eclipse /opt/eclipse/eclipse-cpp
-    echo "Complete!"
+    echo "Completed!"
 fi
 if [[ -f files/usr/share/applications/eclipse-cpp.desktop ]];
   then
@@ -134,7 +149,7 @@ if [[ -f files/usr/share/applications/eclipse-cpp.desktop ]];
 fi
 
 
-# Anaconda
+# Install Anaconda
 
 if compgen -G "runfiles/Anaconda3-*-Linux-x86_64.sh" > /dev/null;
   then
@@ -143,44 +158,57 @@ if compgen -G "runfiles/Anaconda3-*-Linux-x86_64.sh" > /dev/null;
         echo ""
         echo "# Installing Anaconda..."
         sudo runfiles/Anaconda3-*-Linux-x86_64.sh
+        rm runfiles/Anaconda3-*-Linux-x86_64.sh
+        echo "Completed!"
     fi
 fi
 
 
-# Remote access
+# Install Unified Remote
 
 if compgen -G "packages/urserver-*.rpm" > /dev/null;
   then
     echo ""
     echo "# Installing Unified Remote..."
     sudo dnf -y install packages/urserver-*.rpm
+    rm packages/urserver-*.rpm
+    echo "Completed!"
 fi
+
+
+# Install RealVNC
 
 if compgen -G "packages/VNC-*-Linux-x64.rpm" > /dev/null;
   then
     echo ""
     echo "# Installing  RealVNC..."
     sudo dnf -y install packages/VNC-*-Linux-x64.rpm
+    rm packages/VNC-*-Linux-x64.rpm
+    echo "Completed!"
 fi
 
 
-# Backup
+# Install CloudBerry Backup
 
 if compgen -G "packages/rh6_CloudBerryLab_CloudBerryBackup_v*.rpm" > /dev/null;
   then
     echo ""
     echo "# Installing CloudBerry..."
     sudo dnf -y install packages/rh6_CloudBerryLab_CloudBerryBackup_v*.rpm
+    rm packages/rh6_CloudBerryLab_CloudBerryBackup_v*.rpm
+    echo "Completed!"
 fi
 
 
-# Dropbox
+# Install Dropbox
 
 if compgen -G "packages/nautilus-dropbox-*.fedora.x86_64.rpm" > /dev/null;
   then
     echo ""
     echo "# Installing Dropbox..."
     sudo dnf -y install packages/nautilus-dropbox-*.fedora.x86_64.rpm
+    rm packages/nautilus-dropbox-*.fedora.x86_64.rpm
+    echo "Completed!"
     if [[ -f /etc/yum.repos.d/dropbox.repo ]];
       then
         sudo mv /etc/yum.repos.d/dropbox.repo /etc/yum.repos.d/dropbox.repo.DISABLED
