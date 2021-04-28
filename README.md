@@ -86,6 +86,7 @@ Install additional software, if present in the directories [packages](packages),
 - [RealVNC](https://www.realvnc.com/)
 - [CloudBerry Backup](https://www.msp360.com/backup.aspx)
 - [Dropbox](https://www.dropbox.com/)
+- [WakaTime for Terminal](https://wakatime.com/terminal)
 
 ### [7_final-setup.sh](https://github.com/HaraldoFilho/fedora_reinstall/blob/master/7_final-setup.sh)
 Create other users, restore users' avatars, file system table and crontabs.

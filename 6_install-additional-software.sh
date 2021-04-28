@@ -1,9 +1,19 @@
 #!/bin/bash
 
+echo "### INSTALLING ADDITIONAL SOFTWARE ###"
+echo -n  "Remove installers after finished? (yes/[no]): "
+read remove_files
+
+
 # Remove NVIDIA drivers installers
 
-rm runfiles/NVIDIA-Linux-x86_64-*.run
-
+if [[ $remove_files == 'yes' ]];
+  then
+    if compgen -G "runfiles/NVIDIA-Linux-x86_64-*.run" > /dev/null;
+      then
+        rm runfiles/NVIDIA-Linux-x86_64-*.run
+    fi
+fi
 
 # Install Foxit Reader
 
@@ -14,7 +24,10 @@ if compgen -G "runfiles/FoxitReader.enu.setup.*.x64.run" > /dev/null;
     echo ""
     echo "# Installing Foxit PDF Reader..."
     sudo runfiles/FoxitReader.enu.setup.*.x64.run
-    rm runfiles/FoxitReader.enu.setup.*.x64.run
+    if [[ $remove_files == 'yes' ]];
+        then
+            rm runfiles/FoxitReader.enu.setup.*.x64.run
+    fi
     echo "Completed!"
 fi
 
@@ -26,7 +39,10 @@ if [[ -f packages/google-chrome-stable_current_x86_64.rpm ]];
     echo ""
     echo "# Installing Google Chrome..."
     sudo dnf -y install packages/google-chrome-stable_current_x86_64.rpm
-    rm packages/google-chrome-stable_current_x86_64.rpm
+    if [[ $remove_files == 'yes' ]];
+        then
+            rm packages/google-chrome-stable_current_x86_64.rpm
+    fi
     echo "Completed!"
 fi
 
@@ -42,7 +58,10 @@ if [[ -f packages/atom.x86_64.rpm ]];
         sudo rm /var/lib/rpm/.rpm.lock
     fi
     sudo dnf -y install packages/atom.x86_64.rpm
-    rm packages/atom.x86_64.rpm
+    if [[ $remove_files == 'yes' ]];
+        then
+            rm packages/atom.x86_64.rpm
+    fi
     echo "Completed!"
 fi
 
@@ -54,7 +73,10 @@ if [[ -f packages/skypeforlinux-64.rpm ]];
     echo ""
     echo "# Installing Skype..."
     sudo dnf -y install packages/skypeforlinux-64.rpm
-    rm packages/skypeforlinux-64.rpm
+    if [[ $remove_files == 'yes' ]];
+        then
+            rm packages/skypeforlinux-64.rpm
+    fi
     echo "Completed!"
 fi
 
@@ -72,7 +94,10 @@ if compgen -G "tarfiles/android-studio-ide-*-linux.tar.gz" > /dev/null;
         echo ""
         echo "# Installing Android Studio..."
         sudo tar -xzf tarfiles/android-studio-ide-*-linux.tar.gz --directory=/opt/android/
-        rm tarfiles/android-studio-ide-*-linux.tar.gz --directory=/opt/android/
+        if [[ $remove_files == 'yes' ]];
+            then
+                rm tarfiles/android-studio-ide-*-linux.tar.gz
+        fi
         echo "Completed!"
     fi
 fi
@@ -102,7 +127,10 @@ if compgen -G "tarfiles/ideaIC-*.tar.gz" > /dev/null;
     echo ""
     echo "# Installing IntelliJ..."
     sudo tar -xzf tarfiles/ideaIC-*.tar.gz --directory=/opt/jetbrains
-    rm tarfiles/ideaIC-*.tar.gz --directory=/opt/jetbrains
+    if [[ $remove_files == 'yes' ]];
+        then
+            rm tarfiles/ideaIC-*.tar.gz
+    fi
     echo "Completed!"
 fi
 
@@ -123,7 +151,10 @@ if compgen -G "tarfiles/pycharm-community-*.tar.gz" > /dev/null;
     echo ""
     echo "# Installing PyCharm..."
     sudo tar -xzf tarfiles/pycharm-community-*.tar.gz --directory=/opt/jetbrains
-    rm tarfiles/pycharm-community-*.tar.gz --directory=/opt/jetbrains
+    if [[ $remove_files == 'yes' ]];
+        then
+            rm tarfiles/pycharm-community-*.tar.gz
+    fi
     echo "Completed!"
 fi
 
@@ -139,7 +170,10 @@ if compgen -G "tarfiles/eclipse-cpp-*-linux-gtk-x86_64.tar.gz" > /dev/null;
     echo ""
     echo "# Installing Eclipse C++..."
     sudo tar -xzf tarfiles/eclipse-cpp-*-linux-gtk-x86_64.tar.gz --directory=/opt/eclipse
-    rm tarfiles/eclipse-cpp-*-linux-gtk-x86_64.tar.gz --directory=/opt/eclipse
+    if [[ $remove_files == 'yes' ]];
+      then
+        rm tarfiles/eclipse-cpp-*-linux-gtk-x86_64.tar.gz
+    fi
     sudo mv /opt/eclipse/eclipse /opt/eclipse/eclipse-cpp
     echo "Completed!"
 fi
@@ -158,7 +192,10 @@ if compgen -G "runfiles/Anaconda3-*-Linux-x86_64.sh" > /dev/null;
         echo ""
         echo "# Installing Anaconda..."
         sudo runfiles/Anaconda3-*-Linux-x86_64.sh
-        rm runfiles/Anaconda3-*-Linux-x86_64.sh
+        if [[ $remove_files == 'yes' ]];
+          then
+            rm runfiles/Anaconda3-*-Linux-x86_64.sh
+        fi
         echo "Completed!"
     fi
 fi
@@ -171,7 +208,10 @@ if compgen -G "packages/urserver-*.rpm" > /dev/null;
     echo ""
     echo "# Installing Unified Remote..."
     sudo dnf -y install packages/urserver-*.rpm
-    rm packages/urserver-*.rpm
+    if [[ $remove_files == 'yes' ]];
+      then
+        rm packages/urserver-*.rpm
+    fi
     echo "Completed!"
 fi
 
@@ -183,7 +223,10 @@ if compgen -G "packages/VNC-*-Linux-x64.rpm" > /dev/null;
     echo ""
     echo "# Installing  RealVNC..."
     sudo dnf -y install packages/VNC-*-Linux-x64.rpm
-    rm packages/VNC-*-Linux-x64.rpm
+    if [[ $remove_files == 'yes' ]];
+      then
+        rm packages/VNC-*-Linux-x64.rpm
+    fi
     echo "Completed!"
 fi
 
@@ -195,7 +238,10 @@ if compgen -G "packages/rh6_CloudBerryLab_CloudBerryBackup_v*.rpm" > /dev/null;
     echo ""
     echo "# Installing CloudBerry..."
     sudo dnf -y install packages/rh6_CloudBerryLab_CloudBerryBackup_v*.rpm
-    rm packages/rh6_CloudBerryLab_CloudBerryBackup_v*.rpm
+    if [[ $remove_files == 'yes' ]];
+      then
+        rm packages/rh6_CloudBerryLab_CloudBerryBackup_v*.rpm
+    fi
     echo "Completed!"
 fi
 
@@ -207,7 +253,10 @@ if compgen -G "packages/nautilus-dropbox-*.fedora.x86_64.rpm" > /dev/null;
     echo ""
     echo "# Installing Dropbox..."
     sudo dnf -y install packages/nautilus-dropbox-*.fedora.x86_64.rpm
-    rm packages/nautilus-dropbox-*.fedora.x86_64.rpm
+    if [[ $remove_files == 'yes' ]];
+      then
+        rm packages/nautilus-dropbox-*.fedora.x86_64.rpm
+    fi
     echo "Completed!"
     if [[ -f /etc/yum.repos.d/dropbox.repo ]];
       then
@@ -218,3 +267,9 @@ if compgen -G "packages/nautilus-dropbox-*.fedora.x86_64.rpm" > /dev/null;
         sudo mv /usr/share/applications/dropbox.desktop /usr/share/applications/dropbox.desktop.HIDDEN
     fi
 fi
+
+
+# Install Wakatime
+
+pip3 install wakatime
+

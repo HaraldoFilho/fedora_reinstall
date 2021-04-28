@@ -15,15 +15,12 @@ rpm -qa | grep -E "kernel-devel|kernel-headers"
 echo "---------------------------------------------------------------------------------------------------------"
 echo -n "All kernel versions match? (yes/[no]): "
 
-paplay /usr/share/sounds/freedesktop/stereo/complete.oga
-
 read answer
 if [[ $answer != 'yes' ]];
   then
     echo "Trying to sync all packages..."
     sudo dnf -y distro-sync
     echo "System will be rebooted. When finished, run this script again and check kernel versions."
-    paplay /usr/share/sounds/freedesktop/stereo/complete.oga
 fi
 
 echo "Press ENTER to reboot"
