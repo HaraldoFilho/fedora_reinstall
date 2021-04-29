@@ -1,7 +1,7 @@
 ## Packages
 
 #### atom.x86_64.rpm
-https://atom.io/download/rpm
+https://atom.io
 
 #### google-chrome-stable_current_x86_64.rpm
 https://www.google.com/intl/pt-BR/chrome/
