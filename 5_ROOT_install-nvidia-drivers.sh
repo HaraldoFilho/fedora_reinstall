@@ -11,6 +11,6 @@ fi
 runfiles/NVIDIA-Linux-x86_64-*.run
 systemctl set-default graphical.target
 
-echo "Press ENTER to reboot and go back to graphical mode"
+echo "Press ENTER to reboot and go back to graphical mode or 'Ctrl + C' to stay on command line"
 read enter
 reboot

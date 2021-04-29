@@ -268,8 +268,3 @@ if compgen -G "packages/nautilus-dropbox-*.fedora.x86_64.rpm" > /dev/null;
     fi
 fi
 
-
-# Install Wakatime
-
-pip3 install wakatime
-

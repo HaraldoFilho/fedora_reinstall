@@ -103,8 +103,24 @@ dnf -y install ImageMagick
 dnf -y install nautilus-image-converter
 nautilus -q
 
+# install audio codecs
+dnf -y install gstreamer1-plugin-openh264
+
+# remove tour
+dnf -y remove gnome-tour
+
+# install pulseaudio
+echo " "
+echo -n "Remove 'PipeWire' and install 'PulseAudio'? (yes/[no]): "
+read answer
+if [[ $answer == 'yes' ]];
+  then
+    dnf -y swap --allowerasing pipewire-pulseaudio pulseaudio
+    dnf -y install pavucontrol
+fi
+
 # reboot
 echo " "
-echo "Type ENTER to reboot"
+echo "Type ENTER to reboot or 'Ctrl + C' to abort"
 read enter
 reboot

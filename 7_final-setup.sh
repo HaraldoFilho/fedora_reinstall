@@ -36,6 +36,25 @@ do
 done
 
 
+# restore file system table
+
+if [[ -f files/etc/fstab ]];
+  then
+     echo " "
+     echo " "
+     echo "## RESTORE FILE SYSTEM TABLE ##"
+     echo " "
+     echo -n "Restore File System Table? (yes/[no]): "
+     read answer
+     if [[ $answer == 'yes' ]];
+       then
+         sudo cp files/etc/fstab /etc/fstab
+         echo " "
+         echo "File System Table restored!"
+     fi
+fi
+
+
 # restore avatars
 
 if [[ -d files/var/lib/AccountsService/icons ]];
@@ -59,33 +78,11 @@ if [[ -d files/var/lib/AccountsService/icons ]];
 fi
 
 
-# update file system table
-
-if [[ -f files/etc/fstab ]];
-  then
-    echo " "
-    echo " "
-    echo "## UPDATE FILE SYSTEM TABLE ##"
-    echo " "
-    echo "After the two tabs open on the editor, do the following:"
-    echo " "
-    echo "Replace the UUID of partitions '/', '/boot/efi' and 'swap'"
-    echo "in the tab of 'files/etc/fstab' with the values in the tab of '/etc/fstab'."
-    echo " "
-    echo "Press ENTER to continue"
-    read enter
-
-    sudo gedit /etc/fstab &
-    sudo gedit files/etc/fstab
-
-    sudo cp files/etc/fstab /etc/fstab
-fi
-
-
 # restore root crontab
 
 if [[ -f files/var/spool/cron/root ]];
   then
+    echo " "
     echo " "
     echo "## RESTORE ROOT CRONTAB ##"
     echo " "

@@ -59,6 +59,6 @@ echo "# Login as 'root' and execute script '5_ROOT_install-nvidia-drivers.sh' #"
 echo "# Answer YES to all the questions                                       #"
 echo "#########################################################################"
 echo " "
-echo "Press ENTER to reboot"
+echo "Press ENTER to reboot or 'Ctrl + C' to abort"
 read enter
 reboot

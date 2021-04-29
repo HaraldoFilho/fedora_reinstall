@@ -14,7 +14,6 @@ uname -a
 rpm -qa | grep -E "kernel-devel|kernel-headers"
 echo "---------------------------------------------------------------------------------------------------------"
 echo -n "All kernel versions match? (yes/[no]): "
-
 read answer
 if [[ $answer != 'yes' ]];
   then
@@ -23,7 +22,7 @@ if [[ $answer != 'yes' ]];
     echo "System will be rebooted. When finished, run this script again and check kernel versions."
 fi
 
-echo "Press ENTER to reboot"
+echo "Press ENTER to reboot or 'Ctrl +C' to abort"
 read enter
 sudo reboot
 
