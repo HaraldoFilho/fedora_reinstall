@@ -216,21 +216,6 @@ if compgen -G "packages/urserver-*.rpm" > /dev/null;
 fi
 
 
-# Install RealVNC
-
-if compgen -G "packages/VNC-*-Linux-x64.rpm" > /dev/null;
-  then
-    echo ""
-    echo "# Installing  RealVNC..."
-    sudo dnf -y install packages/VNC-*-Linux-x64.rpm
-    if [[ $remove_files == 'yes' ]];
-      then
-        rm packages/VNC-*-Linux-x64.rpm
-    fi
-    echo "Completed!"
-fi
-
-
 # Install CloudBerry Backup
 
 if compgen -G "packages/rh6_CloudBerryLab_CloudBerryBackup_v*.rpm" > /dev/null;
@@ -268,3 +253,26 @@ if compgen -G "packages/nautilus-dropbox-*.fedora.x86_64.rpm" > /dev/null;
     fi
 fi
 
+
+# Install RealVNC
+
+if compgen -G "packages/VNC-*-Linux-x64.rpm" > /dev/null;
+  then
+    echo ""
+    echo "# Installing  RealVNC..."
+    sudo dnf -y install packages/VNC-*-Linux-x64.rpm
+    sudo systemctl disable vncserver-x11-serviced.service
+    sudo mv /usr/share/applications/realvnc-vncserver-service.desktop /home/public/.scripts/vnc/
+    sudo vnclicensewiz
+    if [[ $remove_files == 'yes' ]];
+      then
+        rm packages/VNC-*-Linux-x64.rpm
+    fi
+    echo "Completed!"
+fi
+
+
+echo " "
+echo "Press ENTER to reboot or 'Ctrl +C' to abort"
+read enter
+sudo reboot

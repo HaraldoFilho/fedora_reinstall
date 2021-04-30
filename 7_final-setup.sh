@@ -99,6 +99,8 @@ fi
 echo " "
 echo "Finished!"
 echo " "
-echo "Press ENTER to reboot"
-read ENTER
+echo "Press ENTER to reboot or 'Ctrl +C' to abort"
+read enter
 sudo reboot
+
+
