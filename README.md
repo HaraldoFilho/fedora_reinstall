@@ -59,7 +59,6 @@ Restore some system files, update system and install the following software:
 - Stellarium
 - Image Magick
 - Nautilus Image Converter
-- Snap
 
 ### [3_install-nvidia-dependencies.sh](https://github.com/HaraldoFilho/fedora_reinstall/blob/master/3_install-nvidia-dependencies.sh)
 Install dependencies of NVDIA Drivers.

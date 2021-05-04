@@ -101,9 +101,7 @@ dnf -y install mysql-connector-odbc
 dnf -y install libpq
 dnf -y install ImageMagick
 dnf -y install nautilus-image-converter
-dnf -y install snapd
 nautilus -q
-ln -s /var/lib/snapd/snap /snap
 
 # install audio codecs
 dnf -y install gstreamer1-plugin-openh264
