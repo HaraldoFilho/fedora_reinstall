@@ -48,6 +48,7 @@ dnf -y install gparted
 dnf -y install nutty
 dnf -y install gnome-tweaks
 dnf -y install firewall-config
+dnf -y install pip
 
 # install xterm
 dnf -y install xterm
@@ -108,6 +109,9 @@ dnf -y install gstreamer1-plugin-openh264
 
 # remove tour
 dnf -y remove gnome-tour
+
+# install wakatime
+pip install wakatime
 
 # reboot
 echo " "
