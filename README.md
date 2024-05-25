@@ -1,6 +1,6 @@
 # Fedora Reinstall
 
-Scripts to be executed after a [Fedora 34](https://getfedora.org) reinstallation to restore the system to the previous state.
+Scripts to be executed after a [Fedora 39](https://getfedora.org) reinstallation to restore the system to the previous state.
 
 ## System
 
@@ -38,6 +38,8 @@ Restore some system files, update system and install the following software:
 - xterm
 - CPU-X
 - Samba
+#### Web Browser
+- Google Chrome
 #### Programming Tools
 - GNOME Builder
 - DB Browser for SQLite
@@ -55,7 +57,7 @@ Restore some system files, update system and install the following software:
 #### General Utilities
 - TkDiff
 - Color picker 3
-- Cawbird
+- Google Chrome
 - Stellarium
 - Image Magick
 - Nautilus Image Converter
@@ -74,17 +76,14 @@ Install additional software, if present in the directories [packages](packages),
 
 #### Installed Software
 - [Foxit Reader](https://www.foxitsoftware.com/pdf-reader/)
-- [Google Chrome](https://www.google.com/chrome/)
 - [Atom](https://atom.io/)
-- [Skype](https://www.skype.com/)
 - [Android Studio](https://developer.android.com/studio)
 - [IntelliJ](https://www.jetbrains.com/idea/)
 - [PyCharm](https://www.jetbrains.com/pycharm/)
 - [Eclipse C++](https://www.eclipse.org/)
 - [Anaconda](https://www.anaconda.com/)
 - [Unified Remote](https://www.unifiedremote.com/)
-- [RealVNC](https://www.realvnc.com/)
-- [CloudBerry Backup](https://www.msp360.com/backup.aspx)
+- [MSP360 Backup](https://www.msp360.com/backup.aspx)
 - [Dropbox](https://www.dropbox.com/)
 
 ### [7_final-setup.sh](https://github.com/HaraldoFilho/fedora_reinstall/blob/master/7_final-setup.sh)

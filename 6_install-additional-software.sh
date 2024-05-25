@@ -32,21 +32,6 @@ if compgen -G "runfiles/FoxitReader.enu.setup.*.x64.run" > /dev/null;
 fi
 
 
-# Install Google Chrome
-
-if [[ -f packages/google-chrome-stable_current_x86_64.rpm ]];
-  then
-    echo ""
-    echo "# Installing Google Chrome..."
-    sudo dnf -y install packages/google-chrome-stable_current_x86_64.rpm
-    if [[ $remove_files == 'yes' ]];
-        then
-            rm packages/google-chrome-stable_current_x86_64.rpm
-    fi
-    echo "Completed!"
-fi
-
-
 #  Install Atom
 
 if [[ -f packages/atom.x86_64.rpm ]];
@@ -66,24 +51,9 @@ if [[ -f packages/atom.x86_64.rpm ]];
 fi
 
 
-# Install Skype
-
-if [[ -f packages/skypeforlinux-64.rpm ]];
-  then
-    echo ""
-    echo "# Installing Skype..."
-    sudo dnf -y install packages/skypeforlinux-64.rpm
-    if [[ $remove_files == 'yes' ]];
-        then
-            rm packages/skypeforlinux-64.rpm
-    fi
-    echo "Completed!"
-fi
-
-
 # Install Android Studio
 
-if compgen -G "tarfiles/android-studio-ide-*-linux.tar.gz" > /dev/null;
+if compgen -G "tarfiles/android-studio-*-linux.tar.gz" > /dev/null;
   then
     if [[ ! -d /opt/android/android-studio ]];
       then
@@ -93,10 +63,10 @@ if compgen -G "tarfiles/android-studio-ide-*-linux.tar.gz" > /dev/null;
         fi
         echo ""
         echo "# Installing Android Studio..."
-        sudo tar -xzf tarfiles/android-studio-ide-*-linux.tar.gz --directory=/opt/android/
+        sudo tar -xzf tarfiles/android-studio-*-linux.tar.gz --directory=/opt/android/
         if [[ $remove_files == 'yes' ]];
             then
-                rm tarfiles/android-studio-ide-*-linux.tar.gz
+                rm tarfiles/android-studio-*-linux.tar.gz
         fi
         echo "Completed!"
     fi
@@ -216,16 +186,16 @@ if compgen -G "packages/urserver-*.rpm" > /dev/null;
 fi
 
 
-# Install CloudBerry Backup
+# Install MSP360 Backup
 
-if compgen -G "packages/rh6_CloudBerryLab_CloudBerryBackup_v*.rpm" > /dev/null;
+if compgen -G "packages/rh6_MSP360_MSP360Backup_v*.rpm" > /dev/null;
   then
     echo ""
-    echo "# Installing CloudBerry..."
-    sudo dnf -y install packages/rh6_CloudBerryLab_CloudBerryBackup_v*.rpm
+    echo "# Installing MSP360 Backup..."
+    sudo dnf -y install packages/rh6_MSP360_MSP360Backup_v*.rpm
     if [[ $remove_files == 'yes' ]];
       then
-        rm packages/rh6_CloudBerryLab_CloudBerryBackup_v*.rpm
+        rm packages/rh6_MSP360_MSP360Backup_v*.rpm
     fi
     echo "Completed!"
 fi
@@ -233,14 +203,14 @@ fi
 
 # Install Dropbox
 
-if compgen -G "packages/nautilus-dropbox-*.fedora.x86_64.rpm" > /dev/null;
+if compgen -G "packages/nautilus-dropbox-*.x86_64.rpm" > /dev/null;
   then
     echo ""
     echo "# Installing Dropbox..."
-    sudo dnf -y install packages/nautilus-dropbox-*.fedora.x86_64.rpm
+    sudo dnf -y install packages/nautilus-dropbox-*.x86_64.rpm
     if [[ $remove_files == 'yes' ]];
       then
-        rm packages/nautilus-dropbox-*.fedora.x86_64.rpm
+        rm packages/nautilus-dropbox-*.x86_64.rpm
     fi
     echo "Completed!"
     if [[ -f /etc/yum.repos.d/dropbox.repo ]];
@@ -252,25 +222,6 @@ if compgen -G "packages/nautilus-dropbox-*.fedora.x86_64.rpm" > /dev/null;
         sudo mv /usr/share/applications/dropbox.desktop /usr/share/applications/dropbox.desktop.HIDDEN
     fi
 fi
-
-
-# Install RealVNC
-
-if compgen -G "packages/VNC-*-Linux-x64.rpm" > /dev/null;
-  then
-    echo ""
-    echo "# Installing  RealVNC..."
-    sudo dnf -y install packages/VNC-*-Linux-x64.rpm
-    sudo systemctl disable vncserver-x11-serviced.service
-    sudo mv /usr/share/applications/realvnc-vncserver-service.desktop /home/public/.scripts/vnc/
-    sudo vnclicensewiz
-    if [[ $remove_files == 'yes' ]];
-      then
-        rm packages/VNC-*-Linux-x64.rpm
-    fi
-    echo "Completed!"
-fi
-
 
 echo " "
 echo "Press ENTER to reboot or 'Ctrl +C' to abort"

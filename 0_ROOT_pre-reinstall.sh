@@ -98,8 +98,8 @@ if [[ ! -d files/var/lib/AccountsService ]];
 fi
 
 cp -r /var/lib/AccountsService/* files/var/lib/AccountsService/
-rm files/var/lib/AccountsService/users/gdm
-rm files/var/lib/AccountsService/users/gnome-initial-setup
+#rm files/var/lib/AccountsService/users/gdm
+#rm files/var/lib/AccountsService/users/gnome-initial-setup
 
 # crontabs
 

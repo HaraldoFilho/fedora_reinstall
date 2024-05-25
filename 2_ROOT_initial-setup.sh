@@ -52,6 +52,7 @@ dnf -y install pip
 
 # install xterm
 dnf -y install xterm
+sleep 1
 if [[ -f /usr/share/applications/xterm.desktop ]];
   then
     mv /usr/share/applications/xterm.desktop /usr/share/applications/xterm.desktop.HIDDEN
@@ -59,10 +60,6 @@ fi
 
 # install cpu-x
 dnf -y install cpu-x
-if [[ -f /usr/share/applications/cpu-x.desktop ]];
-  then
-    mv /usr/share/applications/cpu-x.desktop /usr/share/applications/cpu-x.desktop.HIDDEN
-fi
 
 # install samba
 dnf -y install samba
@@ -74,6 +71,9 @@ if [[ -f files/etc/samba/smb.conf ]];
   then
     cp files/etc/samba/smb.conf /etc/samba/
 fi
+
+# install Google Chrome
+dnf -y install google-chrome-stable-*
 
 # install programming tools
 dnf -y install gnome-builder
@@ -95,7 +95,6 @@ dnf -y install armacycles-ad
 # install general utilities
 dnf -y install tkcvs
 dnf -y install gcolor3
-dnf -y install cawbird
 dnf -y install stellarium
 dnf -y install alien
 dnf -y install mysql-connector-odbc
