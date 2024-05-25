@@ -49,6 +49,7 @@ dnf -y install nutty
 dnf -y install gnome-tweaks
 dnf -y install firewall-config
 dnf -y install pip
+dnf -y install seahorse
 
 # install xterm
 dnf -y install xterm

@@ -38,6 +38,7 @@ Restore some system files, update system and install the following software:
 - xterm
 - CPU-X
 - Samba
+- Password and Keys
 #### Web Browser
 - Google Chrome
 #### Programming Tools
