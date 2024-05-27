@@ -70,11 +70,49 @@ if [[ ! -d files/usr/share/applications ]];
     mkdir files/usr/share/applications
 fi
 
-# android studio icon
+
+# Delete old application icons
+
+sudo rm files/usr/share/applications/*
+
+
+# Backup Android Studio icon
 
 if [[ -f /usr/share/applications/android-studio.desktop ]];
   then
     cp /usr/share/applications/android-studio.desktop files/usr/share/applications/
+fi
+
+
+# Backup IntelliJ icon
+
+if [[ -f /usr/share/applications/intellij-ide.desktop ]];
+ then
+   cp /usr/share/applications/intellij-ide.desktop files/usr/share/applications/
+fi
+
+
+# Backup PyCharm icon
+
+if [[ -f /usr/share/applications/pycharm.desktop ]];
+ then
+   cp /usr/share/applications/pycharm.desktop files/usr/share/applications/
+fi
+
+
+# Backup Eclipse icon
+
+if [[ -f /usr/share/applications/eclipse-cpp.desktop ]];
+ then
+   cp /usr/share/applications/eclipse-cpp.desktop files/usr/share/applications/
+fi
+
+
+# Backup Foxit Reader icon
+
+if [[ -f /usr/share/applications/FoxitReader.desktop ]];
+ then
+   cp /usr/share/applications/FoxitReader.desktop files/usr/share/applications/
 fi
 
 

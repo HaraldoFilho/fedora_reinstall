@@ -53,11 +53,6 @@ dnf -y install seahorse
 
 # install xterm
 dnf -y install xterm
-sleep 1
-if [[ -f /usr/share/applications/xterm.desktop ]];
-  then
-    mv /usr/share/applications/xterm.desktop /usr/share/applications/xterm.desktop.HIDDEN
-fi
 
 # install cpu-x
 dnf -y install cpu-x
@@ -110,8 +105,9 @@ dnf -y install gstreamer1-plugin-openh264
 # remove tour
 dnf -y remove gnome-tour
 
-# install wakatime
-pip install wakatime
+# Edit /etc/sysconfig/grub
+echo "GRUB_DISABLE_OS_PROBER=true" >> /etc/sysconfig/grub
+grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg
 
 # reboot
 echo " "

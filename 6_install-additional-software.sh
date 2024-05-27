@@ -15,9 +15,11 @@ if [[ $remove_files == 'yes' ]];
     fi
 fi
 
-# Install Foxit Reader
 
 sudo pwd > /dev/null
+
+
+# Install Foxit Reader
 
 if compgen -G "runfiles/FoxitReader.enu.setup.*.x64.run" > /dev/null;
   then
@@ -29,8 +31,17 @@ if compgen -G "runfiles/FoxitReader.enu.setup.*.x64.run" > /dev/null;
             rm runfiles/FoxitReader.enu.setup.*.x64.run
     fi
     echo "Completed!"
+  else
+    if [[ -f /opt/foxitsoftware/foxitreader/FoxitReader.desktop ]];
+      then
+        if [[ -f files/usr/share/applications/FoxitReader.desktop ]];
+            then
+              echo ""
+              echo "# Found Foxit PDF Reader previous installation. Added icon to applications."
+              sudo cp files/usr/share/applications/FoxitReader.desktop /usr/share/applications/
+        fi
+    fi
 fi
-
 
 #  Install Atom
 
@@ -55,7 +66,26 @@ fi
 
 if compgen -G "tarfiles/android-studio-*-linux.tar.gz" > /dev/null;
   then
-    if [[ ! -d /opt/android/android-studio ]];
+    if [[ -d /opt/android/android-studio ]];
+      then
+        echo ""
+        echo "# Android Studio is already installed. Re-install it? (yes/[no]):"
+        read install
+        if [[ $install == 'yes' ]];
+          then
+            echo "Backup previous installation? ([yes]/no):"
+            read backup
+            if [[ $backup != 'no' ]];
+              then
+                sudo mv /opt/android/android-studio /opt/android/android-studio.old
+            fi
+            sudo rm -rf /opt/android/android-studio
+        fi
+      else
+        install="yes"
+    fi
+
+    if [[ $install == 'yes' ]];
       then
         if [[ ! -d /opt/android ]];
           then
@@ -71,36 +101,54 @@ if compgen -G "tarfiles/android-studio-*-linux.tar.gz" > /dev/null;
         echo "Completed!"
     fi
 fi
-if [[ -f files/usr/share/applications/android-studio.desktop ]];
-  then
-    sudo cp files/usr/share/applications/android-studio.desktop /usr/share/applications/
-fi
-if [[ -f files/etc/udev/rules.d/51-android.rules ]];
-  then
-    sudo cp files/etc/udev/rules.d/51-android.rules /etc/udev/rules.d/
-fi
 
+if [[ -d /opt/android/android-studio ]];
+  echo "Android Studio is installed"
+  then
+    if [[ -f files/usr/share/applications/android-studio.desktop ]];
+      then
+        sudo cp files/usr/share/applications/android-studio.desktop /usr/share/applications/
+        echo "Updated Android Studio icon"
+    fi
+    if [[ -f files/etc/udev/rules.d/51-android.rules ]];
+      then
+        sudo cp files/etc/udev/rules.d/51-android.rules /etc/udev/rules.d/
+        echo "Updated Android Studio device rules"
+    fi
+    # create /virt/android/avd directory
+    if [[ ! -d /virt/android/avd ]];
+      then
+        sudo mkdir /virt/android
+        sudo mkdir /virt/android/avd
+        sudo chmod -R 777 /virt/android
+        echo "Created /virt/android/avd directory"
+    fi
+fi
 
 # Install IntelliJ
 
-if [[ -d ~/.config/JetBrains ]];
-  then
-    sudo rm -fr ~/.config/JetBrains
-fi
-
 if compgen -G "tarfiles/ideaIC-*.tar.gz" > /dev/null;
   then
+    if [[ -d ~/.config/JetBrains ]];
+      then
+        sudo rm -fr ~/.config/JetBrains
+    fi
     if [[ ! -d /opt/jetbrains ]];
       then
         sudo mkdir /opt/jetbrains
     fi
+    if [[ -d /opt/jetbrains/idea-IC ]];
+      then
+        sudo rm -fr /opt/jetbrains/idea-IC
+    fi
     echo ""
     echo "# Installing IntelliJ..."
-    sudo tar -xzf tarfiles/ideaIC-*.tar.gz --directory=/opt/jetbrains
+    sudo tar -xzf tarfiles/ideaIC-*.tar.gz --directory=/opt/jetbrains/
     if [[ $remove_files == 'yes' ]];
         then
             rm tarfiles/ideaIC-*.tar.gz
     fi
+    sudo mv /opt/jetbrains/idea-IC-* /opt/jetbrains/idea-IC
     echo "Completed!"
 fi
 
@@ -114,18 +162,32 @@ fi
 
 if compgen -G "tarfiles/pycharm-community-*.tar.gz" > /dev/null;
   then
+    if [[ -d ~/.config/JetBrains ]];
+      then
+        sudo rm -fr ~/.config/JetBrains
+    fi
     if [[ ! -d /opt/jetbrains ]];
       then
         sudo mkdir /opt/jetbrains
     fi
+    if [[ -d /opt/jetbrains/pycharm ]];
+      then
+        sudo rm -fr /opt/jetbrains/pycharm
+    fi
     echo ""
     echo "# Installing PyCharm..."
-    sudo tar -xzf tarfiles/pycharm-community-*.tar.gz --directory=/opt/jetbrains
+    sudo tar -xzf tarfiles/pycharm-community-*.tar.gz --directory=/opt/jetbrains/
     if [[ $remove_files == 'yes' ]];
         then
-            rm tarfiles/pycharm-community-*.tar.gz
+          rm tarfiles/pycharm-community-*.tar.gz
     fi
+    sudo mv /opt/jetbrains/pycharm-* /opt/jetbrains/pycharm
     echo "Completed!"
+fi
+
+if [[ -f files/usr/share/applications/pycharm.desktop ]];
+  then
+    sudo cp files/usr/share/applications/pycharm.desktop /usr/share/applications/
 fi
 
 
@@ -137,9 +199,13 @@ if compgen -G "tarfiles/eclipse-cpp-*-linux-gtk-x86_64.tar.gz" > /dev/null;
       then
         sudo mkdir /opt/eclipse
     fi
+    if [[ -d /opt/eclipse/eclipse-cpp ]];
+      then
+        sudo rm -fr /opt/eclipse/eclipse-cpp
+    fi
     echo ""
     echo "# Installing Eclipse C++..."
-    sudo tar -xzf tarfiles/eclipse-cpp-*-linux-gtk-x86_64.tar.gz --directory=/opt/eclipse
+    sudo tar -xzf tarfiles/eclipse-cpp-*-linux-gtk-x86_64.tar.gz --directory=/opt/eclipse/
     if [[ $remove_files == 'yes' ]];
       then
         rm tarfiles/eclipse-cpp-*-linux-gtk-x86_64.tar.gz
@@ -170,6 +236,17 @@ if compgen -G "runfiles/Anaconda3-*-Linux-x86_64.sh" > /dev/null;
     fi
 fi
 
+# create /virt/anaconda/conda directory
+if [[ -d /opt/anaconda ]];
+  then
+    if [[ ! -d /virt/anaconda/conda ]];
+      then
+        sudo mkdir /virt/anaconda
+        sudo mkdir /virt/anaconda/conda
+        sudo chmod -R 777 /virt/anaconda
+        echo "Created /virt/anaconda/conda directory"
+    fi
+fi
 
 # Install Unified Remote
 

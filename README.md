@@ -92,7 +92,7 @@ Create other users, restore users' avatars, file system table and crontabs.
 
 ## Usage
 
-- Just before starting the OS reinstallation, run the script _0_ROOT_pre-reinstall.sh_ as root.
+- Just before starting the OS re-installation, run the script _0_ROOT_pre-reinstall.sh_ as root.
 - Get the latest version of [Fedora Workstation](https://getfedora.org/workstation/download/) and reinstall it keeping the original partition scheme.
 - Make sure that all the latest software installers are on directories _packages_, _runfiles_ and _tarfiles_.
 - Run the other scripts in numerical order.

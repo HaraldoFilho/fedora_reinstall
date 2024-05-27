@@ -3,6 +3,22 @@
 sudo pwd > /dev/null
 
 
+# Hide xterm icon
+
+if [[ -f /usr/share/applications/xterm.desktop ]];
+  then
+    sudo mv /usr/share/applications/xterm.desktop /usr/share/applications/xterm.desktop.HIDDEN
+fi
+
+# Create boxes images directory
+
+if [[ ! -d /virt/gnome-boxes/images ]];
+  then
+    sudo mkdir /virt/gnome-boxes
+    sudo mkdir /virt/gnome-boxes/images
+    sudo chmod -R 777 /virt/gnome-boxes
+fi
+
 # create new users
 
 echo " "
@@ -102,5 +118,3 @@ echo " "
 echo "Press ENTER to reboot or 'Ctrl +C' to abort"
 read enter
 sudo reboot
-
-
