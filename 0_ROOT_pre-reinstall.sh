@@ -116,6 +116,14 @@ if [[ -f /usr/share/applications/FoxitReader.desktop ]];
 fi
 
 
+# MSP360 icon
+
+if [[ -f /usr/share/applications/msp360-backup.desktop ]];
+ then
+   cp /usr/share/applications/msp360-backup.desktop files/usr/share/applications/
+fi
+
+
 # /var
 
 if [[ ! -d files/var ]];
@@ -156,3 +164,12 @@ cp /var/spool/cron/* files/var/spool/cron/
 
 # change ownership to admin
 chown -R admin:admin files
+
+# cifs credentials
+if [[ -d /root/.cifs_credentials ]];
+  then
+    cp -r /root/.cifs_credentials files/root/
+fi
+
+# fix linux/windows time issue
+timedatectl set-local-rtc 1 --adjust-system-clock

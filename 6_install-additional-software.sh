@@ -43,20 +43,20 @@ if compgen -G "runfiles/FoxitReader.enu.setup.*.x64.run" > /dev/null;
     fi
 fi
 
-#  Install Atom
+#  Install Pulsar
 
-if [[ -f packages/atom.x86_64.rpm ]];
+if compgen -G "packages/pulsar-*.x86_64.rpm" > /dev/null;
   then
     echo ""
-    echo "# Installing Atom..."
+    echo "# Installing Pulsar..."
     if [[ -f /var/lib/rpm/.rpm.lock ]];
       then
         sudo rm /var/lib/rpm/.rpm.lock
     fi
-    sudo dnf -y install packages/atom.x86_64.rpm
+    sudo dnf -y install packages/pulsar-*.x86_64.rpm
     if [[ $remove_files == 'yes' ]];
         then
-            rm packages/atom.x86_64.rpm
+            rm packages/pulsar-*.x86_64.rpm
     fi
     echo "Completed!"
 fi

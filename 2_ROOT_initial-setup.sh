@@ -1,4 +1,4 @@
-#!/bin/bash
+!/bin/bash
 
 if [[ $HOME != '/root' ]];
   then
@@ -27,6 +27,11 @@ if [[ -f files/root/.bashrc ]];
     cp files/root/.bashrc /root
 fi
 
+if [[ -d files/root/.cifs_credentials ]];
+  then
+    cp -r files/root/.cifs_credentials /root
+fi
+
 if [[ -f /home/public/.bash_aliases ]];
   then
     if [[ ! -f /root/.bash_aliases ]];
@@ -44,6 +49,7 @@ fi
 dnf -y update
 
 # install system utilities
+dnf -y install cronie
 dnf -y install gparted
 dnf -y install nutty
 dnf -y install gnome-tweaks
@@ -107,7 +113,7 @@ dnf -y remove gnome-tour
 
 # Edit /etc/sysconfig/grub
 echo "GRUB_DISABLE_OS_PROBER=true" >> /etc/sysconfig/grub
-grub2-mkconfig -o /boot/efi/EFI/fedora/grub.cfg
+grub2-mkconfig -o /boot/grub2/grub.cfg
 
 # reboot
 echo " "

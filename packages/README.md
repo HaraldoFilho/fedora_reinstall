@@ -1,7 +1,7 @@
 ## Packages
 
-#### atom.x86_64.rpm
-https://atom.io
+#### pulsar-*.x86_64.rpm
+https://pulsar-edit.dev/
 
 #### nautilus-dropbox-****.**.**-*.fedora.x86_64.rpm
 https://www.dropbox.com/install-linux

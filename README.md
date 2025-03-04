@@ -1,20 +1,19 @@
 # Fedora Reinstall
 
-Scripts to be executed after a [Fedora 39](https://getfedora.org) reinstallation to restore the system to the previous state.
+Scripts to be executed after a [Fedora 41](https://getfedora.org) reinstallation to restore the system to the previous state.
 
 ## System
 
 #### Storage
-- SSD1: 240GB (sda)
-- SSD2: 120GB (sdb)
+- SSD1: 1.0TB (sda)
+- SSD2: 128GB (sdb)
 
 #### Partition Scheme
-- sda1: /boot/efi
-- sda2: /
-- sda3: /opt
-- sda4: /home
-- sda5: swap
-- sdb1: /virt
+- sdb1: /boot/efi
+- sdb2: /
+- sdb3: swap
+- sda5: /home
+- sda6: /opt
 
 #### Graphics
 - Integrated Mesa Intel® UHD Graphics 620 (WHL GT2)
@@ -77,7 +76,7 @@ Install additional software, if present in the directories [packages](packages),
 
 #### Installed Software
 - [Foxit Reader](https://www.foxitsoftware.com/pdf-reader/)
-- [Atom](https://atom.io/)
+- [Pulsar](https://pulsar-edit.dev/)
 - [Android Studio](https://developer.android.com/studio)
 - [IntelliJ](https://www.jetbrains.com/idea/)
 - [PyCharm](https://www.jetbrains.com/pycharm/)
